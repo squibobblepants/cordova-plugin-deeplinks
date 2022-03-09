@@ -270,31 +270,40 @@ function isLaunchActivity(activity) {
  * @return {Object} intent-filter as a JSON object
  */
 function createIntentFilter(host, scheme, pathName) {
-  var intentFilter = {
-    '$': {
-      'android:autoVerify': 'true'
-    },
-    'action': [{
-      '$': {
-        'android:name': 'android.intent.action.VIEW'
-      }
-    }],
-    'category': [{
-      '$': {
-        'android:name': 'android.intent.category.DEFAULT'
-      }
-    }, {
-      '$': {
-        'android:name': 'android.intent.category.BROWSABLE'
-      }
-    }],
-    'data': [{
-      '$': {
-        'android:host': host,
-        'android:scheme': scheme
-      }
-    }]
-  };
+    var intentFilter = {
+        '$': {
+            'android:autoVerify': 'true'
+        },
+        'action': [{
+            '$': {
+                'android:name': 'android.intent.action.VIEW'
+            }
+        }],
+        'category': [
+            {
+                '$': {
+                    'android:name': 'android.intent.category.DEFAULT'
+                }
+            }, 
+            {
+                '$': {
+                    'android:name': 'android.intent.category.BROWSABLE'
+                }
+            }
+        ],
+        'data': [
+            {
+                '$': {
+                    'android:host': host
+                }
+            }, 
+            {
+                '$': {
+                    'android:scheme': scheme
+                }
+            }
+        ]
+    };
 
   injectPathComponentIntoIntentFilter(intentFilter, pathName);
 
